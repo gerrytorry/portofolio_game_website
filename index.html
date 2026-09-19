@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="blue">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lhick | Roblox Lua Developer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables untuk Theme Switcher */
+        :root[data-theme="blue"] {
+            --bg-main: #0E1F26;
+            --bg-dark: #0A181E;
+            --bg-card: rgba(3, 59, 94, 0.35);
+            --bg-panel: rgba(10, 24, 30, 0.75);
+            --border-color: rgba(56, 208, 159, 0.3);
+            --border-hover: rgba(135, 223, 172, 0.8);
+            --text-main: #D0EEF0;
+            --text-heading: #FFFFFF;
+            --accent-primary: #38D09F;
+            --accent-secondary: #87DFAC;
+            --accent-glow: rgba(56, 208, 159, 0.4);
+            --btn-grad: linear-gradient(135deg, #033B5E, #2480AF, #38D09F);
+        }
+
+        :root[data-theme="purple"] {
+            --bg-main: #0b0618;
+            --bg-dark: #120926;
+            --bg-card: rgba(28, 15, 54, 0.55);
+            --bg-panel: rgba(20, 10, 38, 0.7);
+            --border-color: rgba(168, 85, 247, 0.3);
+            --border-hover: rgba(236, 72, 153, 0.7);
+            --text-main: #f3f4f6;
+            --text-heading: #FFFFFF;
+            --accent-primary: #a855f7;
+            --accent-secondary: #ec4899;
+            --accent-glow: rgba(168, 85, 247, 0.45);
+            --btn-grad: linear-gradient(135deg, #9333ea, #db2777, #ec4899);
+        }
+
+        :root[data-theme="white"] {
+            --bg-main: #F1F5F9;
+            --bg-dark: #E2E8F0;
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-panel: rgba(248, 250, 252, 0.9);
+            --border-color: rgba(14, 165, 233, 0.3);
+            --border-hover: rgba(2, 132, 199, 0.8);
+            --text-main: #334155;
+            --text-heading: #0F172A;
+            --accent-primary: #0284C7;
+            --accent-secondary: #0369A1;
+            --accent-glow: rgba(14, 165, 233, 0.3);
+            --btn-grad: linear-gradient(135deg, #0284C7, #38BDF8, #0EA5E9);
+        }
+
+        :root[data-theme="black"] {
+            --bg-main: #050505;
+            --bg-dark: #000000;
+            --bg-card: rgba(20, 20, 20, 0.6);
+            --bg-panel: rgba(10, 10, 10, 0.85);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-hover: rgba(255, 255, 255, 0.6);
+            --text-main: #A1A1AA;
+            --text-heading: #FFFFFF;
+            --accent-primary: #F4F4F5;
+            --accent-secondary: #E4E4E7;
+            --accent-glow: rgba(255, 255, 255, 0.3);
+            --btn-grad: linear-gradient(135deg, #27272A, #3F3F46, #71717A);
+        }
+
+        :root[data-theme="yellow"] {
+            --bg-main: #181604;
+            --bg-dark: #0D0C02;
+            --bg-card: rgba(60, 52, 8, 0.35);
+            --bg-panel: rgba(24, 22, 4, 0.8);
+            --border-color: rgba(234, 179, 8, 0.3);
+            --border-hover: rgba(250, 204, 21, 0.8);
+            --text-main: #FEF08A;
+            --text-heading: #FFFFFF;
+            --accent-primary: #EAB308;
+            --accent-secondary: #FACC15;
+            --accent-glow: rgba(234, 179, 8, 0.4);
+            --btn-grad: linear-gradient(135deg, #854D0E, #CA8A04, #FACC15);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .glass-panel {
+            background: var(--bg-panel);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px -10px var(--accent-glow);
+        }
+
+        .accent-text {
+            color: var(--accent-primary);
+        }
+
+        .heading-text {
+            color: var(--text-heading);
+        }
+
+        .theme-btn-grad {
+            background: var(--btn-grad);
+        }
+
+        .pill-shape {
+            border-radius: 9999px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <!-- Ambient Glow Backgrounds -->
+    <div class="fixed top-0 left-1/4 w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse" style="background: var(--accent-glow);"></div>
+
+    <header class="sticky top-0 z-50 px-4 lg:px-12 py-4">
+        <nav class="max-w-7xl mx-auto glass-panel pill-shape px-6 py-3 flex items-center justify-between shadow-2xl">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full theme-btn-grad flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-gamepad text-white text-lg"></i>
+                </div>
+                <span class="font-extrabold text-xl tracking-wider heading-text">LHICK<span class="accent-text">.DEV</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#code" class="hover:text-white transition-colors">Lua Code</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <!-- Action Area: Contact Me + Theme Switcher -->
+            <div class="hidden md:flex items-center space-x-3">
+                <!-- Contact Me Button -->
+                <a href="#contact" class="px-6 py-2.5 pill-shape theme-btn-grad text-white font-semibold text-sm shadow-lg hover:opacity-90 transition-all duration-300">
+                    Contact Me <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
+                </a>
+
+                <!-- Theme Switcher Dropdown Button -->
+                <div class="relative">
+                    <button id="theme-dropdown-btn" onclick="toggleThemeMenu()" class="w-10 h-10 pill-shape glass-card flex items-center justify-center text-white hover:scale-105 transition-all">
+                        <i class="fa-solid fa-palette text-sm accent-text"></i>
+                    </button>
+
+                    <!-- Theme Menu Dropdown -->
+                    <div id="theme-menu" class="hidden absolute right-0 mt-3 w-48 glass-panel rounded-2xl p-2 shadow-2xl z-50 space-y-1">
+                        <button onclick="setTheme('blue')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between hover:bg-white/10 transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-teal-400"></span> Neon Blue</span>
+                            <i id="check-blue" class="fa-solid fa-check text-xs accent-text"></i>
+                        </button>
+                        <button onclick="setTheme('purple')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between hover:bg-white/10 transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-fuchsia-500"></span> Neon Purple</span>
+                            <i id="check-purple" class="fa-solid fa-check text-xs accent-text hidden"></i>
+                        </button>
+                        <button onclick="setTheme('white')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between hover:bg-white/10 transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-slate-200 border border-slate-400"></span> Neon White</span>
+                            <i id="check-white" class="fa-solid fa-check text-xs accent-text hidden"></i>
+                        </button>
+                        <button onclick="setTheme('black')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between hover:bg-white/10 transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-black border border-white/40"></span> Neon Dark</span>
+                            <i id="check-black" class="fa-solid fa-check text-xs accent-text hidden"></i>
+                        </button>
+                        <button onclick="setTheme('yellow')" class="w-full text-left px-3 py-2 rounded-xl text-xs font-semibold flex items-center justify-between hover:bg-white/10 transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-yellow-400"></span> Neon Yellow</span>
+                            <i id="check-yellow" class="fa-solid fa-check text-xs accent-text hidden"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-2 glass-panel rounded-2xl p-6 space-y-4">
+            <a href="#about" class="block font-medium">About</a>
+            <a href="#skills" class="block font-medium">Skills</a>
+            <a href="#projects" class="block font-medium">Projects</a>
+            <a href="#code" class="block font-medium">Lua Code</a>
+            
+            <div class="pt-2 border-t border-white/10 flex items-center justify-between">
+                <span class="text-xs font-semibold">Pilih Tema:</span>
+                <div class="flex gap-2">
+                    <button onclick="setTheme('blue')" class="w-6 h-6 rounded-full bg-teal-400 border border-white"></button>
+                    <button onclick="setTheme('purple')" class="w-6 h-6 rounded-full bg-fuchsia-500 border border-white"></button>
+                    <button onclick="setTheme('white')" class="w-6 h-6 rounded-full bg-slate-200 border border-white"></button>
+                    <button onclick="setTheme('black')" class="w-6 h-6 rounded-full bg-black border border-white"></button>
+                    <button onclick="setTheme('yellow')" class="w-6 h-6 rounded-full bg-yellow-400 border border-white"></button>
+                </div>
+            </div>
+
+            <a href="#contact" class="block w-full text-center py-2.5 pill-shape theme-btn-grad text-white font-semibold">
+                Contact Me
+            </a>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 pt-10 pb-20 md:pt-16 md:pb-28 flex flex-col lg:flex-row items-center justify-between gap-12">
+        <!-- Hero Details -->
+        <div class="flex-1 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs sm:text-sm font-semibold">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 -ml-5"></span>
+                <span>Open for Roblox Game Commissions</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight heading-text">
+                Hi, I'm <span class="accent-text">Lhick</span>
+            </h1>
+            <p class="text-xl sm:text-2xl font-semibold font-mono accent-text">
+                @babylootion • Roblox Studio & Lua Developer
+            </p>
+
+            <p class="text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                Passionate Roblox Game Developer with <strong>1 year of experience</strong> writing clean Lua code, building custom gameplay mechanics, interactive UI systems, and game environments in Roblox Studio.
+            </p>
+
+            <!-- Stats Bar -->
+            <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                <div class="px-5 py-3 rounded-2xl glass-card flex items-center gap-3">
+                    <div class="p-2.5 rounded-xl glass-panel accent-text">
+                        <i class="fa-solid fa-code text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold heading-text">1 Year Exp</div>
+                        <div class="text-xs opacity-75">Lua Programming</div>
+                    </div>
+                </div>
+
+                <div class="px-5 py-3 rounded-2xl glass-card flex items-center gap-3">
+                    <div class="p-2.5 rounded-xl glass-panel accent-text">
+                        <i class="fa-solid fa-layer-group text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold heading-text">3+ Games</div>
+                        <div class="text-xs opacity-75">Published on Roblox</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 pill-shape theme-btn-grad text-white font-bold text-center shadow-lg hover:scale-105 transition-all">
+                    Play My Games <i class="fa-solid fa-play ml-2 text-xs"></i>
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 pill-shape glass-card font-semibold text-center hover:scale-105 transition-all">
+                    Contact via Discord
+                </a>
+            </div>
+        </div>
+
+        <!-- Hero Avatar Box -->
+        <div class="flex-1 w-full max-w-lg relative">
+            <div class="relative p-2 rounded-[2.5rem] theme-btn-grad shadow-2xl">
+                <div class="relative rounded-[2.2rem] glass-panel overflow-hidden p-6 text-center space-y-6">
+                    <div class="w-28 h-28 mx-auto rounded-full theme-btn-grad p-1 shadow-xl">
+                        <img src="head_profile.jpg" alt="Lhick Roblox Avatar" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black heading-text">Lhick</h3>
+                        <p class="text-sm font-mono accent-text">@babylootion</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div class="p-3 rounded-2xl glass-card text-xs">
+                            <i class="fa-solid fa-cube accent-text mb-1 block text-base"></i>
+                            Roblox Studio
+                        </div>
+                        <div class="p-3 rounded-2xl glass-card text-xs">
+                            <i class="fa-solid fa-bolt accent-text mb-1 block text-base"></i>
+                            Lua / Luau Scripting
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-5 glass-card rounded-3xl p-8 space-y-4">
+                <div class="inline-block px-3 py-1 rounded-full glass-panel accent-text text-xs font-semibold">
+                    ABOUT ME
+                </div>
+                <h2 class="text-3xl font-bold heading-text">Roblox Game Programmer</h2>
+                <p class="text-sm leading-relaxed opacity-90">
+                    Hello! I'm <strong>Lhick</strong> (@babylootion). For the past year, I've been creating immersive game experiences, custom mechanics, and mountain/hiking themed games inside Roblox Studio using Lua programming.
+                </p>
+                <p class="text-sm leading-relaxed opacity-75">
+                    I love developing gameplay mechanics like inventory systems, item recalls, custom UI menus, and interactive server systems.
+                </p>
+            </div>
+
+            <div id="skills" class="lg:col-span-7 glass-card rounded-3xl p-8 space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold heading-text flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles accent-text"></i> My Development Skills
+                    </h3>
+                    <span class="text-xs accent-text font-mono">Roblox Studio</span>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 pill-shape glass-panel text-sm font-medium">
+                        <i class="fa-solid fa-code accent-text mr-2"></i>Lua / Luau Programming
+                    </span>
+                    <span class="px-4 py-2 pill-shape glass-panel text-sm font-medium">
+                        <i class="fa-solid fa-suitcase accent-text mr-2"></i>Bag & Inventory Systems
+                    </span>
+                    <span class="px-4 py-2 pill-shape glass-panel text-sm font-medium">
+                        <i class="fa-solid fa-rotate-left accent-text mr-2"></i>Item Recall Features
+                    </span>
+                    <span class="px-4 py-2 pill-shape glass-panel text-sm font-medium">
+                        <i class="fa-solid fa-network-wired accent-text mr-2"></i>RemoteEvents & RemoteFunctions
+                    </span>
+                    <span class="px-4 py-2 pill-shape glass-panel text-sm font-medium">
+                        <i class="fa-solid fa-desktop accent-text mr-2"></i>UI Scripting & Tweening
+                    </span>
+                    <span class="px-4 py-2 pill-shape glass-panel text-sm font-medium">
+                        <i class="fa-solid fa-database accent-text mr-2"></i>DataStore Saving
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="text-center space-y-3 mb-12">
+            <span class="px-4 py-1.5 rounded-full glass-panel accent-text text-xs font-semibold tracking-wider uppercase">
+                MY WORK
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-black heading-text">Featured Roblox Games</h2>
+            <p class="text-sm opacity-75 max-w-xl mx-auto">
+                Check out the Roblox games I have developed and published. Click to play them directly on Roblox!
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Game 1: Gunung Lio -->
+            <div class="glass-card rounded-[2rem] overflow-hidden flex flex-col group">
+                <div class="relative h-48 overflow-hidden theme-btn-grad flex items-center justify-center">
+                    <i class="fa-solid fa-mountain-sun text-6xl text-white/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <span class="absolute top-4 right-4 px-3 py-1 pill-shape glass-panel text-xs">Hiking / Adventure</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <h3 class="text-xl font-bold heading-text group-hover:text-emerald-400 transition-colors">Gunung Lio</h3>
+                        <p class="text-xs mt-2 leading-relaxed opacity-80">
+                            A scenic Roblox mountain adventure game built with custom environmental mechanics, hiking routes, and interactive player systems.
+                        </p>
+                    </div>
+                    <div class="pt-2">
+                        <a href="https://www.roblox.com/games/75215255788211/Gunung-Lio" target="_blank" class="w-full py-3 pill-shape theme-btn-grad text-white font-bold text-xs text-center block shadow-lg transition-all">
+                            Play on Roblox <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 2: MOUNT PASTEL -->
+            <div class="glass-card rounded-[2rem] overflow-hidden flex flex-col group">
+                <div class="relative h-48 overflow-hidden theme-btn-grad flex items-center justify-center">
+                    <i class="fa-solid fa-person-hiking text-6xl text-white/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <span class="absolute top-4 right-4 px-3 py-1 pill-shape glass-panel text-xs">New Feature: Recall & Tas</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <h3 class="text-xl font-bold heading-text group-hover:text-emerald-400 transition-colors">MOUNT PASTEL</h3>
+                        <p class="text-xs mt-2 leading-relaxed opacity-80">
+                            Features custom scripted mechanics including the <strong>Recall system</strong> and <strong>Tas-Tas (Backpack/Inventory) system</strong> for an upgraded player experience.
+                        </p>
+                    </div>
+                    <div class="pt-2">
+                        <a href="https://www.roblox.com/games/98886791529484/MOUNT-PASTEL-NEW-FEATURE-RECALL-TAS-TAS" target="_blank" class="w-full py-3 pill-shape theme-btn-grad text-white font-bold text-xs text-center block shadow-lg transition-all">
+                            Play on Roblox <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 3: ZODIAC -->
+            <div class="glass-card rounded-[2rem] overflow-hidden flex flex-col group">
+                <div class="relative h-48 overflow-hidden theme-btn-grad flex items-center justify-center">
+                    <i class="fa-solid fa-star-of-david text-6xl text-white/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    <span class="absolute top-4 right-4 px-3 py-1 pill-shape glass-panel text-xs">Roblox Game</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <h3 class="text-xl font-bold heading-text group-hover:text-emerald-400 transition-colors">ZODIAC</h3>
+                        <p class="text-xs mt-2 leading-relaxed opacity-80">
+                            Custom Roblox game experience with unique gameplay mechanics and scripted interactions programmed in Lua.
+                        </p>
+                    </div>
+                    <div class="pt-2">
+                        <a href="https://www.roblox.com/games/120237655847436/ZODIAC" target="_blank" class="w-full py-3 pill-shape theme-btn-grad text-white font-bold text-xs text-center block shadow-lg transition-all">
+                            Play on Roblox <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="code" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="glass-panel rounded-[2.5rem] p-6 sm:p-10 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                <div>
+                    <span class="text-xs font-mono accent-text uppercase tracking-widest">// Scripting Sample</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold heading-text">Item Recall System (Lua)</h2>
+                </div>
+
+                <button onclick="copyLuaCode()" class="self-start md:self-auto px-5 py-2.5 pill-shape glass-card hover:bg-white/10 font-mono text-xs border transition-all flex items-center gap-2">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>Copy Code</span>
+                </button>
+            </div>
+
+            <div class="rounded-2xl bg-black/80 border border-white/10 p-4 sm:p-6 font-mono text-xs sm:text-sm text-emerald-400 overflow-x-auto">
+                <pre class="leading-relaxed"><code><span>-- Roblox Studio: Recall System Script by Lhick (@babylootion)</span>
+<span class="text-blue-400">local</span> ReplicatedStorage = game:GetService(<span class="text-yellow-300">"ReplicatedStorage"</span>)
+<span class="text-blue-400">local</span> RecallEvent = ReplicatedStorage:WaitForChild(<span class="text-yellow-300">"RecallEvent"</span>)
+
+<span class="text-blue-400">local</span> <span class="text-purple-400">function</span> OnRecallTriggered(player: Player, checkpointCFrame: CFrame)
+    <span class="text-blue-400">local</span> character = player.Character
+    <span class="text-blue-400">if</span> character <span class="text-blue-400">and</span> character:FindFirstChild(<span class="text-yellow-300">"HumanoidRootPart"</span>) <span class="text-blue-400">then</span>
+        character.HumanoidRootPart.CFrame = checkpointCFrame
+        print(<span class="text-yellow-300">`Player {player.Name} recalled to checkpoint successfully!`</span>)
+    <span class="text-blue-400">end</span>
+<span class="text-blue-400">end</span>
+
+RecallEvent.OnServerEvent:Connect(OnRecallTriggered)</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="glass-panel rounded-[2.5rem] p-8 sm:p-12 text-center space-y-8">
+            <div class="space-y-3 max-w-xl mx-auto">
+                <span class="px-4 py-1.5 rounded-full glass-panel accent-text text-xs font-semibold uppercase">Get in Touch</span>
+                <h2 class="text-3xl sm:text-5xl font-black heading-text">Let's Connect & Work Together</h2>
+                <p class="text-sm opacity-80">Add me on Discord or check out my Roblox profile!</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 pt-2">
+                <!-- Discord Button -->
+                <div onclick="copyDiscordTag()" class="px-6 py-4 pill-shape glass-card cursor-pointer flex items-center gap-3 transition-all">
+                    <i class="fa-brands fa-discord text-2xl accent-text"></i>
+                    <div class="text-left">
+                        <div class="text-xs opacity-75">Discord Username</div>
+                        <div class="text-base font-bold heading-text">babylootion <span class="text-xs font-normal accent-text">(Lhick)</span></div>
+                    </div>
+                    <i class="fa-regular fa-copy text-xs accent-text ml-2"></i>
+                </div>
+
+                <!-- Roblox Profile Button -->
+                <a href="https://www.roblox.com/users/profile" target="_blank" class="px-6 py-4 pill-shape glass-card flex items-center gap-3 transition-all">
+                    <i class="fa-solid fa-user-ninja text-2xl accent-text"></i>
+                    <div class="text-left">
+                        <div class="text-xs opacity-75">Roblox Profile</div>
+                        <div class="text-base font-bold heading-text">@babylootion</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs accent-text ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8 px-6 text-center text-xs opacity-75">
+        <p>© 2026 Lhick (@babylootion). Built for Roblox Developer Portfolio.</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden pill-shape glass-panel px-5 py-3 text-xs font-medium flex items-center gap-2 shadow-xl">
+        <i class="fa-solid fa-circle-check accent-text"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- JavaScript Theme Switcher & Actions -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function toggleThemeMenu() {
+            const menu = document.getElementById('theme-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+
+            ['blue', 'purple', 'white', 'black', 'yellow'].forEach(t => {
+                const check = document.getElementById(`check-${t}`);
+                if (check) check.classList.add('hidden');
+            });
+
+            const activeCheck = document.getElementById(`check-${themeName}`);
+            if (activeCheck) activeCheck.classList.remove('hidden');
+
+            document.getElementById('theme-menu').classList.add('hidden');
+        }
+
+        window.addEventListener('click', function(e) {
+            const btn = document.getElementById('theme-dropdown-btn');
+            const menu = document.getElementById('theme-menu');
+            if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        function copyDiscordTag() {
+            navigator.clipboard.writeText("babylootion").then(() => {
+                showToast("Discord username 'babylootion' copied!");
+            });
+        }
+
+        function copyLuaCode() {
+            const code = `-- Roblox Studio: Recall System Script by Lhick (@babylootion)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RecallEvent = ReplicatedStorage:WaitForChild("RecallEvent")
+
+local function OnRecallTriggered(player: Player, checkpointCFrame: CFrame)
+    local character = player.Character
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        character.HumanoidRootPart.CFrame = checkpointCFrame
+    end
+end
+
+RecallEvent.OnServerEvent:Connect(OnRecallTriggered)`;
+
+            navigator.clipboard.writeText(code).then(() => {
+                showToast("Lua code copied to clipboard!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
