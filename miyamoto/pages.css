@@ -1,0 +1,101 @@
+/* Multi-page editorial extension — neutral gray palette */
+:root{--paper:#f6f6f4;--ink:#191919;--muted:#757575;--blue:#777;--gold:#aaa;--border:#dededc;--dark:#1b1b1b}#progress{background:#777}::selection{background:#ccc;color:#111}.inner-hero{height:min(760px,90svh);min-height:540px;position:relative;background:#262626;color:#fff;display:flex;align-items:flex-end;overflow:hidden}.inner-hero-image{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.025);animation:innerZoom 1.5s ease-out both}.inner-hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.2)),linear-gradient(0deg,rgba(0,0,0,.4),transparent 70%)}.inner-hero-content{position:relative;z-index:2;padding:140px 6% 72px;width:100%}.inner-hero-content .section-kicker{color:#ddd;letter-spacing:.16em;font-size:11px}.inner-hero h1{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:.95;letter-spacing:-.085em;font-size:clamp(65px,9vw,150px);margin:28px 0}.inner-hero h1 i,.huge i{font-weight:500;font-style:normal}.inner-hero-content>p{max-width:560px;line-height:1.65;color:#ddd;font-size:clamp(15px,1.5vw,19px)}.hero-index{display:block;font-size:10px;letter-spacing:.2em;margin-top:48px;color:#ddd}.editorial-pair{display:grid;grid-template-columns:1.35fr .65fr;gap:6%;align-items:start;margin:65px 0 90px}.editorial-copy{font-size:clamp(17px,1.55vw,23px);line-height:1.65;color:var(--muted)}.editorial-copy p:first-child{margin-top:0}.editorial-copy .round-link{margin-top:30px;color:var(--ink)}.wide-visual{position:relative;overflow:hidden}.wide-visual img{height:clamp(350px,55vw,740px);object-fit:cover;transition:transform .8s}.wide-visual:hover img{transform:scale(1.035)}.wide-visual>span{position:absolute;bottom:20px;left:24px;color:#fff;font-size:10px;letter-spacing:.17em;text-shadow:0 1px 8px #000}.value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:70px}.value-grid article{padding:30px;border-top:1px solid #5d5d5d;border-right:1px solid #555}.value-grid article small{color:#aaa}.value-grid h3{font:800 clamp(22px,2.4vw,37px) 'Archivo',Arial,sans-serif;letter-spacing:-.05em}.value-grid p{color:#b6b6b6;line-height:1.65}.services-directory{display:grid;grid-template-columns:1fr 1fr;gap:48px 24px}.service-directory-item{display:flex;flex-direction:column;overflow:hidden;border-top:1px solid var(--border)}.service-directory-text{padding:30px 0}.service-directory-text small,.directory-project span{font-size:11px;letter-spacing:.15em;color:var(--muted)}.service-directory-text h3{font:800 clamp(32px,4vw,65px) 'Archivo',Arial,sans-serif;letter-spacing:-.07em;margin:12px 0}.service-directory-text p{max-width:450px;color:var(--muted);line-height:1.6}.directory-arrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;margin-top:15px;border-bottom:1px solid;padding-bottom:8px}.service-directory-item img{height:clamp(250px,28vw,440px);transition:transform .8s,filter .5s;filter:grayscale(12%)}.service-directory-item:hover img,.directory-project:hover img{transform:scale(1.05);filter:grayscale(0)}.projects-directory{display:grid;grid-template-columns:1fr 1fr;gap:55px 25px}.directory-project{overflow:hidden}.directory-project img{height:clamp(290px,35vw,530px);transition:transform .8s;filter:grayscale(12%)}.directory-project>div{position:relative;padding:24px 0;border-bottom:1px solid var(--border)}.directory-project h3{font:800 clamp(27px,3vw,45px) 'Archivo',Arial,sans-serif;letter-spacing:-.06em;margin:8px 0}.directory-project b{position:absolute;right:10px;bottom:30px;font-size:27px;font-weight:400}.contact-email{display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:8px;font-weight:700;color:var(--ink);overflow-wrap:anywhere}.contact-visual img{height:clamp(320px,47vw,680px)}.contact-panels{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:65px}.contact-panels article{padding-top:25px;border-top:1px solid var(--border)}.contact-panels small{letter-spacing:.15em;color:var(--muted)}.contact-panels h3{font:800 clamp(26px,3vw,45px) 'Archivo',Arial,sans-serif;letter-spacing:-.06em}.contact-panels a{font-size:12px;letter-spacing:.1em;border-bottom:1px solid;padding-bottom:8px}.detail-navigation{display:flex;justify-content:space-between;gap:20px;margin-top:60px}.inner-page #nav a[aria-current=page]{opacity:.6}.inner-page .section{overflow:hidden}@keyframes innerZoom{from{transform:scale(1.1);opacity:.5}to{transform:scale(1.025);opacity:1}}@media(max-width:850px){.editorial-pair{grid-template-columns:1fr;gap:20px}.value-grid{grid-template-columns:1fr 1fr}.services-directory,.projects-directory{grid-template-columns:1fr}.inner-hero-content{padding:135px 6% 60px}.inner-hero{min-height:580px}.contact-panels{grid-template-columns:1fr}}@media(prefers-reduced-motion:reduce){.inner-hero-image{animation:none}}
+
+
+/* 2026-10-15: Scoped inner-page revisions. HOME selectors/files untouched. */
+.inner-page .inner-hero{height:100vh;height:100dvh;min-height:620px;max-height:none;}
+.inner-page .inner-hero-content{padding-top:clamp(175px,21vh,245px);padding-bottom:clamp(45px,7vh,90px);}
+.inner-page .inner-hero-content .section-kicker{position:relative;z-index:2;}
+.inner-page .inner-hero h1{overflow-wrap:anywhere;}
+.inner-page .inner-hero-image{background-size:cover;background-position:center;}
+/* Service underline matches navbar-style reveal, text only; arrow excluded. */
+.inner-page .directory-arrow{display:inline-flex;gap:7px;align-items:center;border:0;padding-bottom:8px;}
+.inner-page .directory-arrow-label{position:relative;display:inline-block;padding-bottom:7px;}
+.inner-page .directory-arrow-label::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .32s ease;}
+.inner-page .service-directory-item:hover .directory-arrow-label::after,.inner-page .service-directory-item:focus-visible .directory-arrow-label::after{transform:scaleX(1);}
+.inner-page .directory-arrow-icon{align-self:flex-start;transition:transform .35s ease;}
+/* Project arrow movement, based on the existing scroll-arrow vertical motion. */
+.inner-page .directory-project b,.inner-page .detail-navigation .round-link span{display:inline-block;transition:transform .35s cubic-bezier(.2,.8,.2,1);}
+.inner-page .directory-project:hover b,.inner-page .directory-project:focus-visible b,.inner-page .detail-navigation .round-link:hover span,.inner-page .detail-navigation .round-link:focus-visible span{transform:translate(3px,-5px);}
+/* Project detail galleries. */
+.inner-page .miya-project-slider{position:relative;overflow:hidden;touch-action:pan-y;background:#1c2326;}
+.inner-page .miya-slider-track{display:flex;transition:transform .55s cubic-bezier(.22,.7,.18,1);will-change:transform;}
+.inner-page .miya-slide{flex:0 0 100%;min-width:0;}
+.inner-page .miya-slide img{display:block;width:100%;height:clamp(350px,55vw,740px);object-fit:cover;}
+.inner-page .miya-slider-caption{position:absolute;bottom:23px;left:24px;color:#fff;font-size:10px;letter-spacing:.14em;text-shadow:0 1px 7px #000;max-width:50%;}
+.inner-page .miya-slider-controls{position:absolute;right:20px;bottom:18px;display:flex;align-items:center;gap:12px;color:#fff;background:rgba(12,17,19,.65);padding:6px;border-radius:30px;}
+.inner-page .miya-slider-controls button{border:1px solid rgba(255,255,255,.65);border-radius:50%;background:transparent;color:inherit;width:36px;height:36px;cursor:pointer;transition:background .2s;}
+.inner-page .miya-slider-controls button:hover,.inner-page .miya-slider-controls button:focus-visible{background:rgba(255,255,255,.2);}
+.inner-page .miya-slider-count{font-size:11px;letter-spacing:.12em;min-width:53px;text-align:center;}
+@media(max-width:850px){.inner-page .inner-hero{min-height:100dvh;}.inner-page .inner-hero-content{padding-top:160px;padding-bottom:55px;}.inner-page .inner-hero h1{font-size:clamp(43px,10vw,85px);letter-spacing:-.07em;}.inner-page .miya-slider-caption{max-width:48%;font-size:8px;}}
+@media(prefers-reduced-motion:reduce){.inner-page .miya-slider-track,.inner-page .directory-arrow-label::after,.inner-page .directory-project b{transition:none;}}
+
+/* PROJECTS arrow interaction — scoped to projects pages, HOME untouched. */
+.inner-page[data-page="projects"] .directory-project .miya-project-arrow{
+  display:grid;place-items:center;width:36px;height:36px;
+  right:2px;bottom:24px;transform:none;
+}
+.inner-page[data-page="projects"] .directory-project .miya-project-arrow svg{
+  display:block;width:27px;height:27px;overflow:visible;
+  stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.inner-page[data-page="projects"] .miya-project-arrow-shaft{
+  stroke-dasharray:26;stroke-dashoffset:0;
+}
+.inner-page[data-page="projects"] .miya-project-arrow-head{
+  stroke-dasharray:25;stroke-dashoffset:0;
+}
+.inner-page[data-page="projects"] .directory-project:hover .miya-project-arrow-shaft,
+.inner-page[data-page="projects"] .directory-project:focus-visible .miya-project-arrow-shaft{
+  animation:miyaArrowDrawShaft .68s cubic-bezier(.2,.75,.25,1) both;
+}
+.inner-page[data-page="projects"] .directory-project:hover .miya-project-arrow-head,
+.inner-page[data-page="projects"] .directory-project:focus-visible .miya-project-arrow-head{
+  animation:miyaArrowDrawHead .68s cubic-bezier(.2,.75,.25,1) both;
+}
+@keyframes miyaArrowDrawShaft{0%{stroke-dashoffset:26}100%{stroke-dashoffset:0}}
+@keyframes miyaArrowDrawHead{0%,55%{stroke-dashoffset:25}100%{stroke-dashoffset:0}}
+/* Detail-page round arrow: white hover disc and a directional turn. */
+.inner-page[data-page^="project-"] .detail-navigation .round-link span{
+  transition:background-color .32s ease,color .32s ease,transform .38s cubic-bezier(.2,.8,.2,1);
+}
+.inner-page[data-page^="project-"] .detail-navigation .round-link:hover span,
+.inner-page[data-page^="project-"] .detail-navigation .round-link:focus-visible span{
+  background:#fff;color:#1c2326;transform:rotate(45deg);
+}
+@media(prefers-reduced-motion:reduce){
+  .inner-page[data-page="projects"] .directory-project:hover .miya-project-arrow-shaft,
+  .inner-page[data-page="projects"] .directory-project:focus-visible .miya-project-arrow-shaft,
+  .inner-page[data-page="projects"] .directory-project:hover .miya-project-arrow-head,
+  .inner-page[data-page="projects"] .directory-project:focus-visible .miya-project-arrow-head{animation:none}
+}
+
+/* 2026-10-15: PROJECT detail buttons — reuse outlined-circle to solid-white hover.
+   Keep the arrow dark and visible on white; no rotation or displacement. */
+.inner-page[data-page^="project-"] .detail-navigation .round-link span{
+  display:grid;place-items:center;
+  background:transparent;color:inherit;
+  transform:none;
+  transition:background-color .28s ease,color .28s ease;
+}
+.inner-page[data-page^="project-"] .detail-navigation .round-link:hover span,
+.inner-page[data-page^="project-"] .detail-navigation .round-link:focus-visible span{
+  background:#fff;color:#1c2326;transform:none;
+}
+
+/* Interactive states for responsive layouts — scoped outside HOME. */
+.inner-page .service-directory-item:is(:hover,:focus-within,:active) .directory-arrow-label::after,
+.inner-page .directory-arrow:is(:hover,:focus-visible,:active) .directory-arrow-label::after {transform:scaleX(1)}
+.inner-page[data-page="projects"] .directory-project:is(:hover,:focus-within,:active) .miya-project-arrow-shaft{animation:miyaArrowDrawShaft .75s ease-out both}
+.inner-page[data-page="projects"] .directory-project:is(:hover,:focus-within,:active) .miya-project-arrow-head{animation:miyaArrowDrawHead .75s ease-out both}
+.inner-page[data-page^="project-"] .detail-navigation .round-link:is(:hover,:focus-visible,:active) > span{background:#fff;color:#1c2326;border-color:#fff;transform:none}
+/* Allow tap and keyboard interaction without a persistent sticky hover on touch screens. */
+@media(hover:none){
+ .inner-page .service-directory-item:focus-within .directory-arrow-label::after{transform:scaleX(1)}
+ .inner-page[data-page^="project-"] .detail-navigation .round-link:active > span{background:#fff;color:#1c2326}
+}
+
+.inner-page[data-page^="project-"] .detail-navigation .round-link.miya-pressed > span{background:#fff;color:#1c2326;border-color:#fff}
+.inner-page .service-directory-item.miya-pressed .directory-arrow-label::after{transform:scaleX(1)}
+.inner-page[data-page="projects"] .directory-project.miya-pressed .miya-project-arrow-shaft{animation:miyaArrowDrawShaft .75s ease-out both}
+.inner-page[data-page="projects"] .directory-project.miya-pressed .miya-project-arrow-head{animation:miyaArrowDrawHead .75s ease-out both}
