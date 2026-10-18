@@ -1,0 +1,84 @@
+/* MIYA MOTO — targeted public-site revisions, 17 October 2026.
+   Do not change locked layouts, themes, or the Home design. */
+/* Detail CTAs: reuse Home's circle + directional arrow interaction.
+   Dark filled circle on white pages for visible contrast. */
+.inner-page .detail-navigation .round-link > span {
+    display:grid!important;
+    place-items:center!important;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    line-height:1;
+    transform:none!important;
+    transition:background-color .28s ease,color .28s ease,border-color .28s ease!important;
+}
+.inner-page .detail-navigation .round-link:is(:hover,:focus-visible,:active) > span,
+.inner-page .detail-navigation .round-link.miya-pressed > span {
+    background:#172b43!important;
+    color:#fff!important;
+    border-color:#172b43!important;
+    transform:none!important;
+}
+body.ice-blue .inner-page .detail-navigation .round-link:is(:hover,:focus-visible,:active) > span,
+body.ice-blue.inner-page .detail-navigation .round-link:is(:hover,:focus-visible,:active) > span {
+    background:#fff!important;
+    color:#073B70!important;
+    border-color:#fff!important;
+}
+/* Never leave the arrow invisible on light backgrounds. */
+.inner-page .detail-navigation .round-link > span {
+    border-color:currentColor;
+}
+.inner-page .detail-navigation .round-link {
+    cursor:pointer;
+}
+/* Project gallery controls: one exact common centerline. */
+.inner-page .miya-slider-controls {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center;
+}
+.inner-page .miya-slider-controls button {
+    flex:0 0 36px;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:0!important;
+    margin:0!important;
+    font-family:Arial,sans-serif;
+    font-size:19px;
+    line-height:1!important;
+    vertical-align:middle;
+    appearance:none;
+}
+.inner-page .miya-slider-count {
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    align-self:center!important;
+    height:36px;
+    line-height:1!important;
+    margin:0!important;
+    padding:0!important;
+    font-variant-numeric:tabular-nums;
+}
+/* Ensure project hero title starts below fixed header on every screen. */
+.inner-page[data-page^="project-"] .inner-hero {
+    min-height:max(100dvh,680px);
+    height:auto!important;
+}
+.inner-page[data-page^="project-"] .inner-hero-content {
+    padding-top:clamp(170px,20vh,245px)!important;
+}
+.inner-page[data-page^="project-"] .inner-hero h1 {
+    font-size:clamp(43px,8vw,125px);
+    overflow-wrap:anywhere;
+}
+@media(max-width:850px) {
+    .inner-page[data-page^="project-"] .inner-hero-content {
+        padding-top:150px!important;
+    }
+    .inner-page[data-page^="project-"] .inner-hero h1 {
+        font-size:clamp(38px,9vw,75px);
+    }
+}

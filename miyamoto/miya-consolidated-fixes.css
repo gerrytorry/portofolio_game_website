@@ -1,0 +1,146 @@
+/* Consolidated targeted fixes. DO NOT change Home round-link or project detail controls. */
+/* Keep all displayed contact links above decorative layers and clickable. */
+.footer-contact {
+    position:relative;
+    isolation:isolate;
+}
+.footer-contact a[href^="mailto:"],
+.editorial-copy a[href^="mailto:"],
+.contact-panels a[href^="mailto:"],
+.contact-section a[href^="mailto:"] {
+    position:relative;
+    z-index:3;
+    pointer-events:auto;
+    cursor:pointer;
+}
+/* Rectangular START A CONVERSATION: only named CTA, never global buttons. */
+a.miya-conversation-btn,
+a.contact-large[href^="mailto:"] {
+    border-radius:0!important;
+}
+.inner-page a.miya-conversation-btn {
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:center;
+    width:auto;
+    max-width:100%;
+    min-height:48px;
+    padding:15px 22px!important;
+    border:1px solid currentColor!important;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-decoration:none;
+    white-space:normal;
+    transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+}
+.inner-page a.miya-conversation-btn:hover,
+.inner-page a.miya-conversation-btn:focus-visible {
+    background:#fff;
+    color:#102C46;
+    border-color:#fff!important;
+}
+body.ice-blue .inner-page a.miya-conversation-btn:hover,
+body.ice-blue .inner-page a.miya-conversation-btn:focus-visible,
+body.ice-blue.inner-page a.miya-conversation-btn:hover,
+body.ice-blue.inner-page a.miya-conversation-btn:focus-visible {
+    background:#fff!important;
+    color:#073B70!important;
+}
+/* Home START A CONVERSATION: retain placement but match square-corner CONTACT US. */
+#contact a.contact-large[href^="mailto:"] {
+    border:1px solid currentColor!important;
+    padding:24px 26px!important;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+#contact a.contact-large[href^="mailto:"]:hover,
+#contact a.contact-large[href^="mailto:"]:focus-visible {
+    background:#fff!important;
+    color:#102C46!important;
+    padding-left:26px!important;
+}
+/* Navbar: reserve enough horizontal space for brand and language arrow. */
+@media(min-width:801px) {
+    #header {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:clamp(8px,1.4vw,20px)
+    }
+    #header .brand {
+        flex:0 1 215px;
+        min-width:150px;
+        max-width:215px;
+        overflow:visible
+    }
+    #header .brand-logo {
+        width:100%;
+        max-width:100%;
+        height:auto;
+        object-fit:contain
+    }
+    #header #nav {
+        flex:1 1 auto;
+        min-width:0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:clamp(8px,1.2vw,20px)
+    }
+    #header .header-actions {
+        flex:0 0 auto;
+        display:flex;
+        align-items:center;
+        gap:clamp(7px,1vw,14px)
+    }
+    #header #lang {
+        display:inline-flex;
+        align-items:center;
+        gap:6px;
+        white-space:nowrap;
+        flex-shrink:0
+    }
+    #header #lang span {
+        position:static;
+        transform:none;
+        display:inline-block;
+        line-height:1
+    }
+}
+@media(min-width:801px) and (max-width:1040px) {
+    #header .brand {
+        flex-basis:165px;
+        min-width:135px
+    }
+    #header #nav {
+        gap:8px
+    }
+    #header .header-actions {
+        gap:7px
+    }
+}
+/* Ice Blue readable palette, scoped to the three reported sections. */
+body.ice-blue #approach.approach,
+body.ice-blue #expertise.expertise,
+body.ice-blue #process.process {
+    background:#DDF7FF!important;
+    color:#102C46!important;
+}
+body.ice-blue #approach .approach-desc,
+body.ice-blue #approach .approach-item p,
+body.ice-blue #expertise .expertise-items small,
+body.ice-blue #process .process-card p {
+    color:#36556A!important;
+}
+body.ice-blue #approach .approach-item .num,
+body.ice-blue #expertise .expertise-items > div > span,
+body.ice-blue #process .process-card > span {
+    color:#075D9C!important;
+}
+body.ice-blue #approach .approach-item,
+body.ice-blue #expertise .expertise-items > div,
+body.ice-blue #process .process-card {
+    border-color:#A5CFDE!important;
+}

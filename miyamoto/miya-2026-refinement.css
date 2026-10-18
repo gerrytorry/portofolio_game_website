@@ -1,0 +1,460 @@
+/* 18 October refinements. Scoped changes: do not alter fixed CTA geometry or project gallery controls. */
+body:not(.inner-page) .hero-floor-line {
+    display:none!important
+}
+/* Restore original numbered labels in Home value and process cards. */
+/* Restore original top rules; only contrast is corrected below. */
+body:not(.inner-page) .contact-section>.section-kicker {
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:flex-start!important;
+    gap:12px!important;
+    text-align:left!important;
+    transform:none;
+}
+body:not(.inner-page) .contact-section>.section-kicker>span {
+    color:#bdeaff!important;
+    opacity:1!important;
+    transform:none!important
+}
+body:not(.inner-page) .contact-section>.section-kicker {
+    color:#fff!important
+}
+body:not(.inner-page) .contact-section>p {
+    color:#d7e9f3!important
+}
+/* Dark-theme dividers and commitment details should not disappear against navy backgrounds. */
+body:not(.light):not(.white-theme) .value-grid article {
+    border-top-color:rgba(255,255,255,.38)!important;
+    border-right-color:rgba(255,255,255,.28)!important
+}
+body:not(.light):not(.white-theme) .value-grid article small {
+    color:#d1e2ee!important
+}
+body:not(.light):not(.white-theme) .value-grid article p {
+    color:#d2e1ea!important
+}
+body:not(.light):not(.white-theme) .expertise-items>div {
+    border-top-color:rgba(255,255,255,.35)!important
+}
+/* Contact details: consecutive, individually actionable email links. */
+.contact-email-stack {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    margin:20px 0 26px
+}
+.contact-email-stack a {
+    font-size:clamp(14px,1.35vw,20px);
+    font-weight:650;
+    overflow-wrap:anywhere;
+    border-bottom:1px solid currentColor;
+    line-height:1.5;
+    padding-bottom:4px;
+    text-decoration:none;
+    transition:color .32s ease,border-color .32s ease
+}
+.contact-email-stack a:hover,.footer-contact a[href*="mail.google.com"]:hover {
+    color:#72bfe9
+}
+.footer-contact a[href*="mail.google.com"],.contact-panels a[href*="mail.google.com"] {
+    position:relative;
+    z-index:2;
+    pointer-events:auto
+}
+/* Project cards: reserve room for pointer and allow long names to wrap. */
+.directory-project>div {
+    padding-right:55px!important
+}
+.directory-project h3 {
+    overflow-wrap:break-word;
+    hyphens:auto;
+    line-height:1.12
+}
+.directory-project b {
+    right:8px!important
+}
+.inner-page .inner-hero-content {
+    scroll-margin-top:110px
+}
+/* Project detail CTAs: preserve established end states and geometry; smoothen transition only. */
+.inner-page[data-page^="project-"] .detail-navigation .round-link>span {
+    transition-property:background-color,color,border-color,transform!important;
+    transition-duration:.38s!important;
+    transition-timing-function:cubic-bezier(.22,1,.36,1)!important
+}
+.inner-page[data-page^="project-"] .detail-navigation .round-link {
+    transition:color .38s cubic-bezier(.22,1,.36,1)!important
+}
+/* Rectangular conversation CTA stays content-width with sharp corners. */
+.contact-large {
+    border-radius:0!important;
+    width:max-content!important;
+    max-width:100%!important
+}
+/* Quotation form: scoped styling with theme-compatible palette. */
+.quotation-section {
+    background:var(--paper,#f7f9fa);
+    color:var(--ink,#14283a)
+}
+.quotation-grid {
+    display:grid;
+    grid-template-columns:minmax(240px,.85fr) minmax(0,1.15fr);
+    gap:clamp(30px,7vw,110px);
+    align-items:start
+}
+.quotation-intro .huge {
+    font-size:clamp(40px,5.5vw,88px);
+    line-height:1.04
+}
+.quotation-intro>p {
+    max-width:470px;
+    font-size:15px;
+    line-height:1.8;
+    margin-top:30px
+}
+.quotation-note {
+    font-size:12px!important;
+    opacity:.72
+}
+.quotation-form {
+    display:flex;
+    flex-direction:column;
+    gap:24px
+}
+.quotation-row {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px
+}
+.quotation-form label {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    font-size:10px;
+    letter-spacing:.13em;
+    font-weight:750
+}
+.quotation-form label>span {
+    color:#2680ac
+}
+.quotation-form :is(input,select,textarea) {
+    width:100%;
+    min-width:0;
+    border:1px solid rgba(100,130,150,.48);
+    border-radius:0;
+    background:transparent;
+    color:inherit;
+    font:400 15px/1.5 Arial,sans-serif;
+    letter-spacing:normal;
+    padding:15px 13px;
+    transition:border-color .3s ease,box-shadow .3s ease,background .3s ease
+}
+.quotation-form select option {
+    color:#162f46;
+    background:#fff
+}
+.quotation-form textarea {
+    resize:vertical;
+    min-height:135px
+}
+.quotation-form :is(input,select,textarea):focus {
+    outline:none;
+    border-color:#368fbc;
+    box-shadow:0 0 0 3px rgba(70,154,203,.18)
+}
+.quotation-form :is(input,select,textarea)[aria-invalid="true"] {
+    border-color:#b94c4c
+}
+.quotation-submit {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px
+}
+.quotation-submit button {
+    border:1px solid currentColor;
+    background:transparent;
+    color:inherit;
+    border-radius:0;
+    padding:17px 23px;
+    letter-spacing:.13em;
+    font-size:11px;
+    font-weight:750;
+    transition:background .38s cubic-bezier(.22,1,.36,1),color .38s cubic-bezier(.22,1,.36,1),border-color .38s cubic-bezier(.22,1,.36,1)
+}
+.quotation-submit button span {
+    display:inline-block;
+    margin-left:25px;
+    transition:transform .38s cubic-bezier(.22,1,.36,1)
+}
+.quotation-submit button:hover {
+    background:#16344d;
+    color:#fff;
+    border-color:#16344d
+}
+.quotation-submit button:hover span {
+    transform:translate(3px,-3px)
+}
+#quotation-status {
+    margin:0;
+    font-size:12px;
+    line-height:1.6;
+    min-height:18px
+}
+@media(max-width:850px) {
+    .quotation-grid {
+        grid-template-columns:1fr
+    }
+    .quotation-row {
+        grid-template-columns:1fr;
+        gap:24px
+    }
+    .quotation-section {
+        padding-block:75px
+    }
+    .directory-project>div {
+        padding-right:45px!important
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    .quotation-form *, .inner-page[data-page^="project-"] .detail-navigation .round-link>span {
+        transition:none!important
+    }
+}
+.supplementary-project {
+    cursor:default
+}
+.supplementary-project .supplementary-description {
+    font-size:13px;
+    line-height:1.65;
+    max-width:520px;
+    opacity:.8;
+    margin:14px 0 0
+}
+.supplementary-project img {
+    filter:saturate(.75)
+}
+/* Preserve original heading offsets beneath the restored numbers. */
+/* FINAL: Preserve Home separators, numbering and original spacing. Improve contrast per theme. */
+body:not(.inner-page) .why-grid article,body:not(.inner-page) .process-card {
+    border-top-style:solid!important;
+    border-top-width:1px!important;
+    padding-top:25px!important
+}
+body:not(.inner-page) .why-grid article>span,body:not(.inner-page) .process-card>span {
+    display:inline!important;
+    visibility:visible!important
+}
+body:not(.inner-page) .why-grid h3 {
+    margin-top:45px!important
+}
+body:not(.inner-page) .process-card h3 {
+    margin-top:55px!important
+}
+body:not(.inner-page):not(.ice-blue):not(.light):not(.white-theme) .why-grid article,
+body:not(.inner-page):not(.ice-blue):not(.light):not(.white-theme) .process-card {
+    border-top-color:rgba(190,222,241,.60)!important
+}
+body:not(.inner-page).ice-blue .why-grid article,body:not(.inner-page).ice-blue .process-card {
+    border-top-color:#488ba8!important
+}
+body:not(.inner-page):is(.light,.white-theme) .why-grid article,
+body:not(.inner-page):is(.light,.white-theme) .process-card {
+    border-top-color:#9babb4!important
+}
+/* Make original About commitment rules readable without removing the grid. */
+body:not(.ice-blue):not(.light):not(.white-theme) .value-grid article {
+    border-top-color:rgba(194,224,242,.55)!important;
+    border-right-color:rgba(194,224,242,.4)!important
+}
+body.ice-blue .value-grid article {
+    border-color:#5599b5!important
+}
+/* Shared motion character: CONTACT US is the reference. Size and geometry stay content-driven. */
+:root {
+    --miya-cta-ease:cubic-bezier(.22,1,.36,1);
+    --miya-cta-duration:.38s
+}
+#header .contact-btn, a.miya-conversation-btn, .quotation-submit button {
+    transition:background-color var(--miya-cta-duration) var(--miya-cta-ease),color var(--miya-cta-duration) var(--miya-cta-ease),border-color var(--miya-cta-duration) var(--miya-cta-ease)!important;
+    border-radius:0!important;
+}
+a.miya-conversation-btn,.quotation-submit button {
+    width:max-content!important;
+    max-width:100%!important
+}
+a.miya-conversation-btn span,.quotation-submit button span,#header .contact-btn span {
+    display:inline-block;
+    transition:transform var(--miya-cta-duration) var(--miya-cta-ease)!important
+}
+a.miya-conversation-btn:hover span,.quotation-submit button:hover span,#header .contact-btn:hover span {
+    transform:translate(3px,-3px)
+}
+/* Dark navy: hover changes to white as on CONTACT US. */
+body:not(.ice-blue):not(.light):not(.white-theme):not(.day) a.miya-conversation-btn:hover,
+body:not(.ice-blue):not(.light):not(.white-theme):not(.day) .quotation-submit button:hover {
+    background:#fff!important;
+    color:#102c46!important;
+    border-color:#fff!important
+}
+/* Light and Ice Blue: follow contrast behavior of light-theme CONTACT US. */
+body:is(.ice-blue,.light,.white-theme,.day) a.miya-conversation-btn:hover,
+body:is(.ice-blue,.light,.white-theme,.day) .quotation-submit button:hover {
+    background:#fff!important;
+    color:#102c46!important;
+    border-color:#fff!important
+}
+@media(prefers-reduced-motion:reduce) {
+    #header .contact-btn,a.miya-conversation-btn,.quotation-submit button {
+        transition:none!important
+    }
+}
+/* FIX: Home conversation CTA shares CONTACT US / SEND REQUEST interaction. */
+#contact a.contact-large.miya-conversation-btn {
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:max-content!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    padding:20px 32px!important;
+    border:1px solid currentColor!important;
+    border-radius:0!important;
+    text-decoration:none!important;
+    font-size:12px!important;
+    font-weight:700!important;
+    letter-spacing:.12em!important;
+    line-height:1.35!important;
+    transform:none;
+    transition:background-color var(--miya-cta-duration) var(--miya-cta-ease),color var(--miya-cta-duration) var(--miya-cta-ease),border-color var(--miya-cta-duration) var(--miya-cta-ease)!important;
+}
+#contact a.contact-large.miya-conversation-btn:hover,
+#contact a.contact-large.miya-conversation-btn:focus-visible {
+    padding-left:32px!important;
+    padding-right:32px!important;
+    background:#fff!important;
+    color:#102c46!important;
+    border-color:#fff!important;
+    transform:none!important
+}
+@media(max-width:420px) {
+    #contact a.contact-large.miya-conversation-btn {
+        font-size:10px!important;
+        padding:18px 20px!important
+    }
+    #contact a.contact-large.miya-conversation-btn:hover {
+        padding-left:20px!important;
+        padding-right:20px!important
+    }
+}
+/* ================================================================
+   BAGIAN: IKON DAN INFORMASI KONTAK
+   Berlaku untuk Footer dan halaman Contact Us.
+   Aturan warna per tema diletakkan terpisah agar mudah dipelihara.
+   ================================================================ */
+
+.miya-icon-link {
+    display: inline-flex !important;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 100%;
+    min-width: 0;
+    text-decoration: none;
+}
+.miya-icon-link > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.miya-inline-icon {
+    display: inline-block;
+    flex: none;
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+    margin-top: .16em;
+    vertical-align: middle;
+}
+/* Ikon pada Footer tetap mengikuti warna Footer yang aktif. */
+.footer-top .miya-icon-link {
+    align-items: flex-start;
+    line-height: 1.65;
+}
+.footer-top .miya-icon-link .miya-inline-icon {
+    margin-top: .24em;
+}
+.footer-contact .miya-icon-link {
+    position: relative;
+    z-index: 2;
+}
+/* Jarak dan tata letak informasi pada halaman Contact Us. */
+body[data-page="contact"] .editorial-copy .contact-email-stack {
+    align-items: flex-start;
+    gap: 14px;
+}
+body[data-page="contact"] .editorial-copy .contact-email-stack a {
+    line-height: 1.5;
+}
+body[data-page="contact"] .editorial-copy .miya-contact-address {
+    line-height: 1.8;
+}
+body[data-page="contact"] .editorial-copy .miya-contact-phone-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+/* ---------------------------------------------------------------
+   WARNA KONTAK BERDASARKAN TEMA
+   White    : navy gelap agar terbaca pada latar terang.
+   Ice Blue : navy gelap agar terbaca pada latar biru muda.
+   Dark Navy: putih agar terbaca pada latar gelap.
+   Ikon SVG memakai currentColor, jadi selalu mengikuti teks.
+   --------------------------------------------------------------- */
+
+body[data-page="contact"] .editorial-copy .miya-icon-link,
+body[data-page="contact"] .editorial-copy .miya-icon-link:visited,
+body[data-page="contact"] .editorial-copy > p,
+body[data-page="contact"] .editorial-copy > p a,
+body[data-page="contact"] .editorial-copy > p a:visited {
+    color: #102c46 !important;
+}
+body.ice-blue[data-page="contact"] .editorial-copy .miya-icon-link,
+body.ice-blue[data-page="contact"] .editorial-copy .miya-icon-link:visited,
+body.ice-blue[data-page="contact"] .editorial-copy > p,
+body.ice-blue[data-page="contact"] .editorial-copy > p a,
+body.ice-blue[data-page="contact"] .editorial-copy > p a:visited {
+    color: #073b70 !important;
+}
+body.night[data-page="contact"] .editorial-copy .miya-icon-link,
+body.night[data-page="contact"] .editorial-copy .miya-icon-link:visited,
+body.night[data-page="contact"] .editorial-copy > p,
+body.night[data-page="contact"] .editorial-copy > p a,
+body.night[data-page="contact"] .editorial-copy > p a:visited {
+    color: #ffffff !important;
+}
+/* Hover tidak mengubah lebar, padding, atau posisi teks. */
+body[data-page="contact"] .editorial-copy .miya-icon-link {
+    transition: opacity .28s ease;
+}
+body[data-page="contact"] .editorial-copy .miya-icon-link:hover,
+body[data-page="contact"] .editorial-copy .miya-icon-link:focus-visible {
+    opacity: .78;
+}
+@media (max-width: 520px) {
+    .miya-icon-link {
+        gap: 9px;
+    }
+    .miya-inline-icon {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+    }
+}
+.miya-inline-icon {
+    width:16px;
+    height:16px;
+    min-width:16px
+}
