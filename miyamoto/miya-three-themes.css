@@ -1,0 +1,104 @@
+/* Additive theme only. Existing day and night CSS is unchanged. */
+#theme {
+    position:relative;
+    z-index:2
+}
+.miya-theme-menu {
+    position:fixed;
+    z-index:200;
+    min-width:194px;
+    padding:8px;
+    border:1px solid #b6d9ed;
+    border-radius:12px;
+    background:#fff;
+    color:#0d2740;
+    box-shadow:0 15px 38px #071b3260;
+    display:none
+}
+.miya-theme-menu.open {
+    display:grid;
+    gap:3px
+}
+.miya-theme-menu button {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#0d2740;
+    border-radius:7px;
+    text-align:left;
+    padding:11px 10px;
+    font:600 12px Inter,Arial,sans-serif;
+    cursor:pointer
+}
+.miya-theme-menu button:hover,.miya-theme-menu button[aria-checked=true] {
+    background:#e9f6ff
+}
+.miya-theme-dot {
+    height:16px;
+    width:16px;
+    border-radius:50%;
+    border:1px solid #a4c6db;
+    flex:none
+}
+body.ice-blue {
+    --paper:#80E8FF;
+    --ink:#073B70;
+    --muted:#205A78;
+    --border:#5BC9E9;
+    --blue:#075D9C;
+    --dark:#147AA8;
+    background:#80E8FF;
+    color:#073B70
+}
+body.ice-blue .section:not(.dark-section) {
+    background:#80E8FF;
+    color:#073B70
+}
+body.ice-blue .about,body.ice-blue .inner-editorial {
+    background:#C8F7FF;
+    color:#073B70
+}
+body.ice-blue .projects,body.ice-blue .editorial-end {
+    background:#A7F0FF;
+    color:#073B70
+}
+body.ice-blue .process,body.ice-blue.inner-page .section:nth-of-type(2n):not(.dark-section) {
+    background:#DDFBFF;
+    color:#073B70
+}
+body.ice-blue .dark-section {
+    background:#1689B9;
+    color:#fff
+}
+body.ice-blue .contact-section {
+    background:#096B9D;
+    color:#fff
+}
+body.ice-blue footer {
+    background:#073B70;
+    color:#fff
+}
+body.ice-blue #header.scrolled {
+    background:rgba(200,247,255,.98);
+    color:#073B70
+}
+body.ice-blue .hero,body.ice-blue .inner-hero {
+    background:#1689B9
+}
+body.ice-blue .about-intro p,body.ice-blue .about-story p,body.ice-blue .editorial-copy,body.ice-blue .service-directory-text p {
+    color:#205A78
+}
+body.ice-blue .project-card small,body.ice-blue .service-item p,body.ice-blue .directory-project span {
+    color:#205A78
+}
+body.ice-blue .service-item,body.ice-blue .project-card .project-meta {
+    border-color:#5BC9E9
+}
+@media(max-width:700px) {
+    .miya-theme-menu {
+        min-width:175px
+    }
+}

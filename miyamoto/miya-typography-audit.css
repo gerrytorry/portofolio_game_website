@@ -1,0 +1,105 @@
+/* MIYA MOTO — Typography and spacing audit, 17 Oct 2026.
+   Scope: text layout only. NO CTA, gallery controls, navbar, theme colors,
+   background, images, content or interaction modifications. */
+/* Keep heading letters distinct and text lines readable across all themes. */
+.hero h1, .huge, .contact-section h2, .inner-page .inner-hero h1 {
+    letter-spacing:-.038em;
+    line-height:1.075;
+    text-rendering:optimizeLegibility;
+    font-kerning:normal;
+}
+/* Long section headings need their own rhythm and safe wrapping. */
+.huge {
+    letter-spacing:-.034em;
+    line-height:1.105;
+    max-width:100%;
+    overflow-wrap:normal;
+}
+.section-head .huge, .approach .huge, .expertise .huge {
+    letter-spacing:-.032em;
+    line-height:1.12;
+}
+/* The large 'LET'S BUILD SOMETHING MEANINGFUL' heading was visibly cramped. */
+.contact-section h2 {
+    font-size:clamp(45px,7.55vw,124px);
+    letter-spacing:-.036em;
+    line-height:1.105;
+    max-width:100%;
+    overflow-wrap:normal;
+    word-break:normal;
+}
+/* Interior project/company titles: avoid colliding glyphs while retaining scale. */
+.inner-page .inner-hero h1 {
+    letter-spacing:-.038em;
+    line-height:1.075;
+    overflow-wrap:break-word;
+    word-break:normal;
+    hyphens:none;
+}
+/* Content hierarchy: maintain comfortable paragraph rhythm. */
+.about-intro p,.about-story p,.approach-desc,
+.editorial-copy p,.service-directory-text p,.contact-panels p,
+.why-grid p,.process-card p,.value-grid p {
+    line-height:1.75;
+    letter-spacing:0;
+}
+.approach-item p,.service-item p,.expertise-items small {
+    line-height:1.6;
+    letter-spacing:.005em;
+}
+.project-card h3,.directory-project h3,.service-directory-text h3,
+.value-grid h3,.contact-panels h3,.about-story h3 {
+    letter-spacing:-.018em;
+    line-height:1.22;
+    overflow-wrap:break-word;
+}
+.process-card h3,.why-grid h3,.approach-item h3,.service-item h3 {
+    letter-spacing:-.012em;
+    line-height:1.24;
+}
+.section-kicker,.eyebrow,.mini-label,.hero-index {
+    line-height:1.5;
+}
+/* Responsive heading sizes protect both visual hierarchy and available width. */
+@media(max-width:1100px) {
+    .contact-section h2 {
+        font-size:clamp(44px,7.4vw,90px);
+    }
+    .inner-page .inner-hero h1 {
+        letter-spacing:-.032em;
+        line-height:1.09;
+    }
+}
+@media(max-width:800px) {
+    .huge,.hero h1 {
+        letter-spacing:-.027em;
+        line-height:1.12;
+    }
+    .contact-section h2 {
+        font-size:clamp(43px,8.6vw,72px);
+        letter-spacing:-.028em;
+        line-height:1.13;
+    }
+    .inner-page .inner-hero h1 {
+        letter-spacing:-.026em;
+        line-height:1.11;
+    }
+}
+@media(max-width:520px) {
+    .huge,.hero h1 {
+        letter-spacing:-.022em;
+        line-height:1.13;
+    }
+    .contact-section h2 {
+        font-size:clamp(38px,8.3vw,54px);
+        letter-spacing:-.025em;
+        line-height:1.14;
+    }
+    .inner-page .inner-hero h1 {
+        letter-spacing:-.02em;
+        line-height:1.13;
+    }
+    .process-card h3 {
+        font-size:clamp(19px,5.4vw,26px);
+    }
+}

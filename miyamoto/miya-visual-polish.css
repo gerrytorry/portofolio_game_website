@@ -1,0 +1,147 @@
+/* Scoped polish: do not change Home round-link buttons or project detail gallery/buttons. */
+/* Rectangular Conversation CTA (only this named CTA), existing size/spacing/animation preserved. */
+a.contact-large[href^="mailto:"] {
+    border-radius:0!important;
+}
+.inner-page a.miya-conversation-btn {
+    border-radius:0!important;
+}
+/* Keep the logo, language caret and navigation in their own non-overlapping areas. */
+#header {
+    column-gap:clamp(10px,1.5vw,22px);
+}
+#header .brand {
+    flex:0 0 auto;
+    min-width:0;
+    position:relative;
+    z-index:1;
+}
+#header .brand-logo {
+    display:block;
+    object-fit:contain;
+    max-width:min(215px,19vw);
+    height:auto;
+}
+#header #nav {
+    min-width:0;
+    justify-content:center;
+    flex:1 1 auto;
+    gap:clamp(10px,1.5vw,24px);
+}
+#header .header-actions {
+    flex:0 0 auto;
+    gap:clamp(8px,1.2vw,18px);
+}
+#header #lang {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    white-space:nowrap;
+}
+#header #lang span {
+    display:inline-block;
+    position:static;
+    line-height:1;
+    transform:none;
+}
+@media(min-width:801px) and (max-width:1100px) {
+    #header .brand-logo {
+        max-width:165px
+    }
+    #header #nav {
+        gap:9px
+    }
+    #header .header-actions {
+        gap:7px
+    }
+    #header .contact-btn {
+        padding:12px 10px
+    }
+}
+@media(max-width:800px) {
+    #header .brand-logo {
+        max-width:185px
+    }
+    #header #nav {
+        flex:none;
+        justify-content:flex-start
+    }
+}
+/* Ice Blue: readable text in the blue approach section, no change to layout. */
+body.ice-blue .approach.dark-section {
+    background:#DDF7FF!important;
+    color:#102C46!important;
+}
+body.ice-blue .approach .section-kicker,body.ice-blue .approach .huge,
+body.ice-blue .approach .approach-item h3,
+body.ice-blue .approach .approach-item strong {
+    color:#102C46!important;
+}
+body.ice-blue .approach .approach-desc,
+body.ice-blue .approach .approach-item p,
+body.ice-blue .approach .approach-item small {
+    color:#36556A!important;
+}
+body.ice-blue .approach .approach-item .num,
+body.ice-blue .approach .approach-item .number,
+body.ice-blue .approach .approach-item > span {
+    color:#075D9C!important;
+}
+body.ice-blue .approach .approach-item {
+    border-color:#A5CFDE!important;
+}
+body.ice-blue .approach .approach-visual figcaption {
+    color:#36556A!important;
+}
+body.ice-blue .approach .approach-item .arrow {
+    color:#102C46!important;
+}
+/* Links stay clickable even if a decorative layer overlaps their text. */
+.footer-contact a, .contact-page a[href^="mailto:"],
+.inner-page a[href^="mailto:"] {
+    position:relative;
+    z-index:2;
+    pointer-events:auto;
+}
+/* Ice Blue ONLY: EXPERTISE contrast fix (Home buttons and all other sections untouched). */
+body.ice-blue #expertise.expertise.dark-section {
+    background:#DDF7FF!important;
+    color:#102C46!important;
+}
+body.ice-blue #expertise .huge,
+body.ice-blue #expertise .section-kicker,
+body.ice-blue #expertise .expertise-items strong {
+    color:#102C46!important;
+}
+body.ice-blue #expertise .section-kicker span,
+body.ice-blue #expertise .expertise-items > div > span {
+    color:#075D9C!important;
+}
+body.ice-blue #expertise .expertise-items small {
+    color:#36556A!important;
+}
+body.ice-blue #expertise .expertise-items > div {
+    border-top-color:#A5CFDE!important;
+}
+/* ICE BLUE — OUR PROCESS (Discover / Plan / Design / Build / Deliver).
+   Contrast-only fix; preserve five-column layout, typography and Home CTA behavior. */
+body.ice-blue #process.process {
+    background:#DDF7FF!important;
+    color:#102C46!important;
+}
+body.ice-blue #process .section-kicker,
+body.ice-blue #process .huge,
+body.ice-blue #process .process-card h3 {
+    color:#102C46!important;
+}
+body.ice-blue #process .section-kicker span,
+body.ice-blue #process .process-card > span {
+    color:#075D9C!important;
+}
+body.ice-blue #process .process-card p {
+    color:#36556A!important;
+}
+body.ice-blue #process .process-card {
+    border-top-color:#A5CFDE!important;
+}
