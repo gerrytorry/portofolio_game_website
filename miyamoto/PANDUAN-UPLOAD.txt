@@ -1,2 +1,0 @@
-UPLOAD ISI FOLDER INI ke folder miyamoto di branch main repository portofolio_game_website. Jangan upload folder ini sebagai subfolder tambahan. Jangan upload .env, vendor, atau source Laravel. URL: https://lhick.my.id/miyamoto/
-Perlu uji navigasi, tampilan, animasi dan gambar setelah deploy.
