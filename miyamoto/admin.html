@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miya Moto Indonesia | Administrator</title>
+  <link rel="icon" href="/miyamoto/assets/miyamoto-favicon.png">
+  <link rel="stylesheet" href="/miyamoto/admin-assets/admin.css">
+  <script src="/miyamoto/admin-assets/demo.js" defer></script>
+</head>
+<body>
+  <section id="login" class="login-shell hidden" aria-label="Login">
+    <form id="loginForm" class="login-card">
+      <img class="login-logo" src="/miyamoto/assets/miya-moto-logo-corporate-blue.png" alt="Miya Moto Indonesia">
+      <h1 data-i18n="loginTitle">Masuk Administrator</h1>
+      <p class="muted login-intro" data-i18n="loginInfo">Akses khusus administrator website.</p>
+      <label for="email" data-i18n="email">Email Administrator</label>
+      <div class="login-field"><span aria-hidden="true">✉</span><input id="email" type="email" autocomplete="username" value="admin@miyamoto.com" required></div>
+      <label for="password" data-i18n="password">Kata sandi</label>
+      <div class="login-field"><span aria-hidden="true">♙</span><input id="password" type="password" autocomplete="current-password" required><button id="showPassword" type="button" class="password-eye" aria-label="Tampilkan kata sandi">◉</button></div>
+      <button class="button primary" type="submit" data-i18n="login">Masuk</button>
+      <p id="loginError" role="alert" class="error"></p>
+    </form>
+  </section>
+  <div id="workspace" class="layout hidden">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/miyamoto/assets/miya-moto-logo-corporate-blue.png" alt="Miya Moto Indonesia">
+        </div>
+      <div class="sidebar-toggle-row"><button id="collapse" class="icon-button" title="Tutup atau buka menu" aria-label="Tutup atau buka menu">‹</button></div>
+      <nav id="nav" aria-label="Navigasi administrator">
+        <a href="#" class="nav-item active" data-page="index.html"><span class="nav-icon">⌂</span><span class="nav-label" data-i18n="home">Beranda</span></a>
+        <a href="#" class="nav-item" data-page="about.html"><span class="nav-icon">◎</span><span class="nav-label" data-i18n="about">Tentang Kami</span></a>
+        <a href="#" class="nav-item" data-page="services.html"><span class="nav-icon">▦</span><span class="nav-label" data-i18n="services">Layanan</span></a>
+        <a href="#" class="nav-item" data-page="projects.html"><span class="nav-icon">▤</span><span class="nav-label" data-i18n="projects">Proyek</span></a>
+        <a href="#" class="nav-item" data-page="contact.html"><span class="nav-icon">✉</span><span class="nav-label" data-i18n="contact">Kontak</span></a>
+        <a href="#" class="nav-item" id="footerNav"><span class="nav-icon">▥</span><span class="nav-label" data-i18n="footer">Footer</span></a>
+        <a href="#" class="nav-item" id="historyNav"><span class="nav-icon">◷</span><span class="nav-label" data-i18n="history">Riwayat Aktivitas</span></a>
+      </nav>
+    </aside>
+    <main class="main">
+      <header class="header">
+        <div class="header-heading"><button id="mobileNav" class="icon-button" aria-label="Buka navigasi">☰</button><strong id="pageName">Beranda</strong></div>
+        <div class="header-actions">
+          <a id="publicWebsite" class="button ghost public-website-link" href="/miyamoto/index.html" target="_blank" rel="noopener noreferrer"><span data-i18n="publicWebsite">Website Publik</span> ↗</a>
+          <button id="logout" class="button logout" type="button"><span aria-hidden="true">↪</span> <span data-i18n="logout">Keluar</span></button>
+        </div>
+      </header>
+      <section class="toolbar" aria-label="Kontrol editor">
+        <span id="modeStatus" class="mode-status">● <span data-i18n="editActive">Mode Edit Aktif</span></span>
+        <div class="toolbar-buttons">
+          <div class="device-buttons"><button id="desktop" class="button tiny selected" type="button">▣ <span>Desktop</span></button><button id="mobile" class="button tiny ghost" type="button">▯ <span>HP</span></button></div>
+          <button id="editMode" class="button tiny ghost" type="button" data-i18n="visitorMode">Mode Pengunjung</button>
+          <button id="save" class="button tiny ghost" type="button" data-i18n="save">Simpan Sementara</button>
+          <button id="publish" class="button tiny primary" type="button" data-i18n="publish">Publikasikan</button>
+        </div>
+      </section>
+      <div class="action-row hidden" id="projectActions"><button id="addProject" class="button ghost" type="button" data-i18n="addProject">+ Tambah Proyek</button><button id="deleteProject" class="button danger" type="button" data-i18n="deleteProject">Hapus Proyek</button></div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <div id="frameWrap" class="frame-wrap"><iframe id="website" title="Preview website Miya Moto"></iframe></div>
+      <section id="historyPanel" class="history-panel hidden"><h2 data-i18n="history">Riwayat Aktivitas</h2><div id="historyList"></div><button id="restore" class="button danger" data-i18n="restore">Pulihkan Publikasi Terakhir</button> <button id="changePassword" class="button ghost" type="button" data-i18n="changePassword">Ubah Kata Sandi</button></section>
+    </main>
+  </div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="dialog">
+      <div class="dialog-head"><h2 id="modalTitle">Ubah Konten</h2><button id="cancelX" class="icon-button" aria-label="Tutup">✕</button></div>
+      <div id="textAreaWrap"><textarea id="value" rows="7" aria-label="Teks yang diedit"></textarea></div>
+      <div id="photoWrap" class="hidden">
+        <label for="photo" data-i18n="choosePhoto">Pilih foto</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp">
+        <div class="photo-editor hidden" id="photoEditor">
+          <p class="muted" data-i18n="dragHint">Geser foto pada area preview untuk mengatur posisi.</p>
+          <canvas id="cropCanvas" width="700" height="390" aria-label="Area pengaturan foto"></canvas>
+          <div class="adjustments">
+            <label>Perbesar <input type="range" id="zoom" min="100" max="300" value="100"><output id="zoomOut">100%</output></label>
+            <label>Kecerahan <input type="range" id="brightness" min="40" max="160" value="100"><output id="brightnessOut">100%</output></label>
+            <label>Kontras <input type="range" id="contrast" min="50" max="160" value="100"><output id="contrastOut">100%</output></label>
+            <label>Saturasi <input type="range" id="saturation" min="0" max="200" value="100"><output id="saturationOut">100%</output></label>
+            <label>Suhu Warna <input type="range" id="temperature" min="-100" max="100" value="0"><output id="temperatureOut">0</output></label>
+            <label>Lapisan <input type="range" id="overlay" min="0" max="80" value="0"><output id="overlayOut">0%</output></label>
+          </div>
+          <button id="resetPhoto" class="button ghost" type="button" data-i18n="reset">Reset Foto</button>
+        </div>
+      </div>
+      <div class="dialog-actions"><button id="cancel" class="button ghost" type="button" data-i18n="cancel">Batal</button><button id="confirm" class="button primary" type="button" data-i18n="apply">Terapkan Perubahan</button></div>
+    </div>
+  </div>
+
+  <div id="projectModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <form id="projectForm" class="dialog project-dialog">
+      <div class="dialog-head"><h2 id="projectModalTitle">Tambah Proyek</h2><button id="closeProject" class="icon-button" type="button" aria-label="Tutup">✕</button></div>
+      <label for="projectName">Nama perusahaan / proyek</label><input id="projectName" maxlength="180" required placeholder="PT. Nama Perusahaan">
+      <label for="projectLocation">Lokasi</label><input id="projectLocation" maxlength="180" placeholder="Kota / kawasan">
+      <label for="projectDescription">Detail pekerjaan</label><textarea id="projectDescription" rows="4" maxlength="4000" placeholder="Rincian pekerjaan proyek"></textarea>
+      <label for="projectPhotos">Foto proyek (dapat memilih beberapa foto)</label><input id="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+      <p class="muted">Foto yang dipilih dapat diatur menggunakan editor foto sebelum disimpan.</p>
+      <div id="projectPhotoList" class="project-photo-list"></div>
+      <div class="dialog-actions"><button id="cancelProject" class="button ghost" type="button">Batal</button><button id="saveProject" class="button primary" type="submit">Simpan Sementara</button></div>
+    </form>
+  </div>
+  <div id="deleteModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+    <div class="dialog delete-dialog">
+      <div class="dialog-head"><h2 id="deleteTitle" data-i18n="deleteProject">Hapus Proyek</h2><button id="closeDelete" class="icon-button" type="button" aria-label="Tutup">✕</button></div>
+      <p class="muted" data-i18n="deleteHint">Pilih proyek berdasarkan nama atau foto. Tidak ada proyek yang langsung dihapus dari website publik.</p>
+      <input id="searchProject" type="search" placeholder="Cari proyek atau perusahaan..." aria-label="Cari proyek">
+      <div id="deleteProjectList" class="delete-project-list"></div>
+      <div id="deleteConfirmation" class="delete-confirmation hidden" role="group" aria-label="Konfirmasi penghapusan">
+        <h3 data-i18n="deleteConfirmTitle">Hapus proyek ini?</h3>
+        <p id="deleteSelectedName"></p>
+        <p class="muted" data-i18n="deleteConfirmInfo">Proyek hanya ditandai untuk dihapus dalam draft. Website publik tidak berubah sebelum dipublikasikan.</p>
+      </div>
+      <div class="dialog-actions"><button id="cancelDelete" class="button ghost" type="button" data-i18n="cancel">Batal</button><button id="confirmDelete" class="button danger" type="button" disabled data-i18n="deleteDraft">Hapus dari Draft</button></div>
+    </div>
+  </div>
+</body>
+</html>
