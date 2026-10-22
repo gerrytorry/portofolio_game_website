@@ -1,0 +1,15 @@
+/* Penyempurnaan tambahan tanpa mengganti desain tiga tema yang telah FIX. */
+body.black-white{--paper:#f0f0f0;--ink:#111;--muted:#4c4c4c;--border:#a8a8a8;--blue:#292929;--dark:#111;background:#f0f0f0;color:#111}
+body.black-white .section:not(.dark-section){background:#f0f0f0;color:#111}
+body.black-white .dark-section,body.black-white footer{background:#161616;color:#fff}
+body.black-white .hero,body.black-white .inner-hero{background:#252525;color:#fff}
+body.black-white .about,body.black-white .inner-editorial{background:#fff;color:#111}
+body.black-white #header.scrolled{background:#f4f4f4;color:#111}
+/* Penanda halaman aktif tidak memengaruhi animasi hover lama. */
+#nav a.miya-current-page{position:relative}
+#nav a.miya-current-page::after{content:"";position:absolute;bottom:-7px;left:0;right:0;height:2px;background:currentColor;pointer-events:none}
+/* Semua tombol panah dan navigasi kembali ke atas memiliki alignment konsisten. */
+.miya-back-top{display:flex!important;align-items:center;justify-content:center;padding:0!important;width:44px;height:44px;background:#fff!important;color:#112b45!important;border-color:#fff!important}
+body:not(.night):not(.ice-blue):not(.black-white) .miya-back-top{background:#17283a!important;color:#fff!important;border-color:#17283a!important}
+.miya-back-top svg,.miya-back-top span{display:block;margin:auto}
+@media(max-width:700px){.miya-back-top{width:38px!important;height:38px!important;font-size:16px!important}}

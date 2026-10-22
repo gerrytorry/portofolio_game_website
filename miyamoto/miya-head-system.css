@@ -1,0 +1,43 @@
+/* =============================================================
+   STANDAR HEAD SECTION HALAMAN DALAM
+   Satu ritme jarak untuk tagline, judul, deskripsi, identitas.
+   Tidak mengubah layout Home desktop yang sudah FIX.
+   ============================================================= */
+.inner-page .inner-hero-content {
+    --head-gap-top: clamp(18px, 2.2vw, 30px);
+    --head-gap-description: clamp(22px, 2.6vw, 36px);
+    --head-gap-bottom: clamp(32px, 4vw, 52px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    min-width: 0;
+}
+.inner-page .inner-hero-content .section-kicker { margin: 0; }
+.inner-page .inner-hero-content > h1 {
+    margin: var(--head-gap-top) 0 0;
+    max-width: 100%;
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+}
+.inner-page .inner-hero-content > p {
+    margin: var(--head-gap-description) 0 0;
+    max-width: min(560px, 100%);
+}
+.inner-page .inner-hero-content > .hero-index {
+    margin-top: var(--head-gap-bottom);
+}
+@media (max-width: 800px) {
+    .inner-page .inner-hero { height: auto; min-height: 100svh; overflow: visible; }
+    .inner-page .inner-hero-content {
+        padding: clamp(125px, 18vh, 175px) 6% clamp(38px, 7vh, 70px);
+        --head-gap-top: 20px;
+        --head-gap-description: 24px;
+        --head-gap-bottom: 36px;
+    }
+    .inner-page .inner-hero h1 {
+        font-size: clamp(35px, 8.5vw, 72px);
+        letter-spacing: -0.055em;
+        line-height: 1.05;
+    }
+}

@@ -1,0 +1,156 @@
+/* ============================================================
+   STABILITAS LAYOUT PUBLIK — 22 OKTOBER 2026
+   Aturan publik berlaku sama di browser dan iframe administrator.
+   Desktop EN mempertahankan komposisi desain yang telah disetujui.
+   ============================================================ */
+
+/* Teks hasil terjemahan tidak boleh memaksa lebar kontainer. */
+#home .hero-inner,
+#home .hero-bottom-text,
+#home .hero-bottom-text > *,
+.inner-hero-content,
+.inner-hero-content > * {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Bahasa Indonesia/Jepang: judul lebih panjang harus memiliki batas
+   yang proporsional, bukan menggunakan ukuran raksasa versi Inggris. */
+@media (min-width: 801px) {
+    html[lang="id"] #home .hero h1,
+    html[lang="ja"] #home .hero h1 {
+        font-size: clamp(52px, 6.5vw, 96px);
+        line-height: 1.02;
+        letter-spacing: -0.055em;
+        overflow-wrap: anywhere;
+        margin-top: 24px;
+        margin-bottom: 28px;
+    }
+    html[lang="id"] #home .hero-inner,
+    html[lang="ja"] #home .hero-inner {
+        top: 49%;
+        transform: translateY(-43%);
+    }
+}
+
+/* Seluruh halaman dalam: ritme empat elemen seragam. */
+.inner-hero-content {
+    padding-top: clamp(100px, 13vh, 145px);
+    padding-bottom: clamp(42px, 7vh, 72px);
+}
+.inner-hero-content .section-kicker {
+    margin-bottom: 22px;
+}
+.inner-hero-content h1 {
+    margin-top: 0;
+    margin-bottom: 32px;
+}
+.inner-hero-content > p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.inner-hero-content .hero-index {
+    margin-top: 42px;
+}
+
+/* Home ponsel: konten mengikuti alur normal; tidak terpotong. */
+@media (max-width: 800px) {
+    #home .hero {
+        height: auto;
+        min-height: 100svh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    #home .hero-inner {
+        position: relative;
+        inset: auto;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        padding: clamp(120px, 16svh, 155px) 6% 38px;
+        margin: 0;
+    }
+    #home .hero .eyebrow {
+        max-width: 100%;
+        font-size: clamp(8px, 2.2vw, 10px);
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+        white-space: normal;
+    }
+    #home .hero h1,
+    html[lang="id"] #home .hero h1,
+    html[lang="ja"] #home .hero h1 {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(30px, 8.4vw, 62px);
+        line-height: 1.07;
+        letter-spacing: -0.055em;
+        overflow-wrap: anywhere;
+        word-break: normal;
+        white-space: normal;
+        margin: 24px 0 28px;
+    }
+    #home .hero-bottom-text {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 22px;
+        width: 100%;
+    }
+    #home .hero-bottom-text p {
+        max-width: 100%;
+        margin: 0;
+        font-size: clamp(13px, 3.5vw, 16px);
+        overflow-wrap: anywhere;
+    }
+    #home .hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 14px;
+        margin: 0;
+        max-width: 100%;
+    }
+    #home .hero-links > * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    #home .hero-floor {
+        position: relative;
+        inset: auto;
+        width: 88%;
+        margin: auto 6% 0;
+        padding: 24px 0 26px;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+    .inner-hero {
+        height: auto;
+        min-height: 100svh;
+        align-items: flex-end;
+    }
+    .inner-hero-content {
+        padding: clamp(130px, 19svh, 170px) 6% 40px;
+    }
+    .inner-hero-content h1 {
+        font-size: clamp(34px, 9vw, 68px);
+        line-height: 1.05;
+        letter-spacing: -0.055em;
+        overflow-wrap: anywhere;
+        margin: 22px 0 28px;
+    }
+    .inner-hero-content .hero-index { margin-top: 38px; }
+}
+@media (max-width: 420px) {
+    #home .hero h1,
+    html[lang="id"] #home .hero h1,
+    html[lang="ja"] #home .hero h1 {
+        font-size: clamp(29px, 8vw, 36px);
+    }
+    #home .hero-links { flex-direction: column; }
+    #home .hero-links > * { width: fit-content; }
+}

@@ -1,0 +1,155 @@
+/* =============================================================
+   MIYA MOTO — RESPONSIVE HOME
+   Khusus halaman Home pada layar tablet dan ponsel.
+   Tidak mengubah ukuran, warna, maupun interaksi desktop.
+   ============================================================= */
+@media (max-width: 800px) {
+    /* Setiap section harus menyusut mengikuti ruang yang tersedia. */
+    #home,
+    #home > section,
+    #home .section,
+    #home .hero-inner,
+    #home .hero-bottom-text,
+    #home .about-top,
+    #home .about-lower,
+    #home .approach-grid,
+    #home .service-grid,
+    #home .expertise-grid,
+    #home .projects-grid {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    #home .section :is(h1, h2, h3, p),
+    #home .hero :is(h1, p) {
+        max-width: 100%;
+    }
+
+    /* Ukuran heading bergerak secara halus sesuai lebar layar. */
+    #home .huge {
+        font-size: clamp(28px, 6.8vw, 54px);
+    }
+
+    /* Kata MULTIDISCIPLINARY panjang; jangan sampai mendorong viewport. */
+    #home .expertise .huge {
+        font-size: clamp(18px, 5.15vw, 40px);
+        letter-spacing: -0.032em;
+        line-height: 1.15;
+    }
+
+    #home .hero h1 {
+        font-size: clamp(42px, 10.2vw, 78px);
+        overflow-wrap: normal;
+    }
+
+    #home .eyebrow,
+    #home .section-kicker {
+        max-width: 100%;
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    #home img,
+    #home video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Menu dan tombol ke atas tetap mengikuti tepi layar perangkat. */
+    #header {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+    #header .brand,
+    #header .header-actions {
+        min-width: 0;
+    }
+    #header .brand-logo {
+        max-width: 100%;
+        height: auto;
+    }
+    #menu {
+        flex-shrink: 0;
+    }
+    .miya-back-top {
+        right: max(16px, env(safe-area-inset-right));
+    }
+}
+
+@media (max-width: 520px) {
+    #home .section {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    #home .huge {
+        font-size: clamp(26px, 7.4vw, 39px);
+    }
+    #home .expertise .huge {
+        font-size: clamp(18px, 5.15vw, 27px);
+    }
+    #home .hero h1 {
+        font-size: clamp(39px, 10vw, 55px);
+    }
+    #home .hero-links {
+        max-width: 100%;
+    }
+    #home .hero-links > * {
+        max-width: 100%;
+    }
+}
+
+
+/* =============================================================
+   PERBAIKAN MOBILE: hanya Home pada viewport ponsel.
+   Desktop tetap menggunakan baseline publik FIX(3).
+   Alur dokumen mencegah judul terjemahan menimpa CTA.
+   ============================================================= */
+@media (max-width: 800px) {
+    #home .hero {
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+    }
+    #home .hero-inner {
+        position: relative;
+        inset: auto;
+        transform: none;
+        width: auto;
+        margin: 0;
+        padding: clamp(118px, 17vh, 155px) 6% 45px;
+    }
+    #home .hero h1 {
+        font-size: clamp(36px, 8.5vw, 68px);
+        line-height: 1.04;
+        letter-spacing: -0.055em;
+        overflow-wrap: anywhere;
+        word-break: normal;
+        max-width: 100%;
+        margin: 22px 0 26px;
+    }
+    #home .hero-bottom-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    #home .hero-bottom-text p { margin: 0; max-width: 100%; }
+    #home .hero-links { display: flex; flex-wrap: wrap; gap: 18px 24px; max-width: 100%; }
+    #home .hero-links > * { max-width: 100%; }
+    #home .hero-floor {
+        position: relative;
+        inset: auto;
+        width: auto;
+        margin: auto 6% 0;
+        padding: 22px 0 26px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 520px) {
+    #home .hero h1 { font-size: clamp(34px, 8.7vw, 48px); }
+    #home .hero-links .btn { white-space: normal; }
+}

@@ -6,7 +6,6 @@ addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 $('#menu').addEventListener('click', () => $('#nav').classList.toggle('open'));
 $$('#nav a').forEach(a => a.addEventListener('click', () => $('#nav').classList.remove('open')));
-$('#lang').addEventListener('click', () => { const x = $('#lang'); x.firstChild.textContent = x.textContent.includes('EN') ? 'ID ' : x.textContent.includes('ID') ? 'JA ' : 'EN '; });
 const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) {
     e.target.classList.add('visible');
     observer.unobserve(e.target);

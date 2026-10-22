@@ -1,0 +1,3 @@
+/* Garis menu aktif tanpa meredupkan warna font atau mengubah hover. */
+#nav a.miya-current-page{opacity:1!important;position:relative}
+#nav a.miya-current-page::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:currentColor;opacity:1;transform:none;animation:none}
